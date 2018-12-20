@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title><%= title %></title>
+</head>
+<body>
+	<table>
+		<tr>
+	        <th>task_id</th>
+	        <th>machine_id</th>
+	        <th>machine_name</th>
+			<th>lan_ip</th>
+			<th>shelf_switch</th>
+			<th>dmi_product_name</th>
+			<th>dmi_part_number</th>
+			<th>dmi_serial_number</th>
+			<th>dmi_oem_string</th>
+			<th>dmi_system_conf</th>
+	    </tr>
+		<% for(var i=0; i<data.length; i++){ %>
+				<tr>
+					<td><%= data[i].task_id %></td>
+					<td><%= data[i].machine_id %></td>
+					<td><%= data[i].machine_name %></td>
+					<td><%= data[i].lan_ip %></td>
+					<td><%= data[i].shelf_switch %></td>
+					<td><%= data[i].dmi_product_name %></td>
+					<td><%= data[i].dmi_part_number %></td>
+					<td><%= data[i].dmi_serial_number %></td>
+					<td><%= data[i].dmi_oem_string %></td>
+					<td><%= data[i].dmi_system_conf %></td>										
+				</tr>
+		<% } %>
+	</table>
+</body>
+</html>

@@ -1,0 +1,22 @@
+var mysql = require('mysql');
+
+/** 配置mysql的参数 */
+var pool = mysql.createPool({
+    host:'localhost',
+    user:'root',
+    password:'123456',
+    database:'tpms'
+});
+
+/** 数据库链接 */
+function query(sql,callback){
+    pool.getConnection(function(err,connection){
+        connection.query(sql,function(err,rows){
+            callback(err,rows);
+            //释放链接
+            connection.release();
+        });
+    });
+}
+
+exports.query = query;
