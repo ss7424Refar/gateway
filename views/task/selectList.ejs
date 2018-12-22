@@ -4,7 +4,18 @@
     <meta charset="UTF-8">
     <title><%= title %></title>
 </head>
+<style>
+	table tr td{
+		border: thin dotted #96B97D;
+	}
+</style>
+<script>
+	function jump() {
+		window.location.href='/task/add';
+	}
+</script>
 <body>
+	<button onclick="jump()">add</button>
 	<table>
 		<tr>
 	        <th>task_id</th>
@@ -17,6 +28,7 @@
 			<th>dmi_serial_number</th>
 			<th>dmi_oem_string</th>
 			<th>dmi_system_conf</th>
+			<th>Op</th>
 	    </tr>
 		<% for(var i=0; i<data.length; i++){ %>
 				<tr>
@@ -30,6 +42,8 @@
 					<td><%= data[i].dmi_serial_number %></td>
 					<td><%= data[i].dmi_oem_string %></td>
 					<td><%= data[i].dmi_system_conf %></td>										
+					<td><%= data[i].dmi_system_conf %></td>
+					<td><a href="/task/doDelete/<%= data[i].task_id %>">delete</a></td>
 				</tr>
 		<% } %>
 	</table>
