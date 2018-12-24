@@ -54,6 +54,31 @@ router.get('/doDelete/:id', function (req, res) {
 	// res.send(id);
 
 	let sql = 'delete from ats_task_basic where task_id = ?';
+	let sql2 = 'delete from ats_task_tool_steps where task_id = ?';
+
+	db.excute(sql2, [id], function (err, result) {
+		if (err) {
+			console.log('[error]-' + err);
+			res.json({msg : err});
+		} else {
+			db.excute(sql, [id], function (err, result) {
+				if (err) {
+					console.log('[error]-' + err);
+					res.json({msg : err});
+				} else {
+					res.redirect('/task/select');
+				}
+			});
+		}
+	});
+
+
+});
+
+// 更新操作
+router.get('/doUpdate/:id', function(req, res){
+	let id = req.params.id;
+	let sql = 'update ats_task_basic set machine_name = \'updater\' where task_id = ?';
 
 	db.excute(sql, [id], function (err, result) {
 		if (err) {
@@ -64,5 +89,4 @@ router.get('/doDelete/:id', function (req, res) {
 		}
 	})
 });
-
 module.exports = router;
